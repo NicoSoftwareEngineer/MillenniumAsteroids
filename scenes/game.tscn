@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bb7ojvvnwwepd"]
+
+[ext_resource type="PackedScene" uid="uid://coeqxqdme05uf" path="res://scenes/millennium.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://c3gd5hli2lwcn" path="res://scripts/Game.cs" id="1_yqjtg"]
+
+[node name="Game" type="Node2D" unique_id=700983699]
+script = ExtResource("1_yqjtg")
+
+[node name="Millennium" parent="." unique_id=1710579711 instance=ExtResource("1_uwrxv")]
+position = Vector2(640, 360)
+rotation = 0.0
+
+[node name="Lasers" type="Node2D" parent="." unique_id=304957682]
