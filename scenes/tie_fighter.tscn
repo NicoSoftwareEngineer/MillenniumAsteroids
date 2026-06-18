@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cthvryl7p8tue"]
+
+[ext_resource type="Texture2D" uid="uid://b8nnixp125skr" path="res://assets/tie_fighter.png" id="1_bc60u"]
+[ext_resource type="Script" uid="uid://cjj48iiahphyt" path="res://scripts/TieFighter.cs" id="1_qsrvq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bc60u"]
+size = Vector2(42, 44)
+
+[node name="TieFighter" type="Area2D" unique_id=298538417]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_qsrvq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1700503555]
+rotation = 1.5707964
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_bc60u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1222447637]
+shape = SubResource("RectangleShape2D_bc60u")

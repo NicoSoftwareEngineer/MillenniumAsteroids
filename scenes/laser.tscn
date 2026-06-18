@@ -25,4 +25,5 @@ shape = SubResource("RectangleShape2D_a7dhc")
 position = Vector2(3, -1.0000001)
 rect = Rect2(-3.0759583, -8.101471, 30.497746, 18.659859)
 
+[connection signal="area_entered" from="." to="." method="LaserEntered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="LaserExitedScreen"]

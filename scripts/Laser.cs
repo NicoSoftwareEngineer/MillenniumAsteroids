@@ -23,4 +23,12 @@ public partial class Laser : Area2D
 	{
 		QueueFree();
 	}
+	
+	private void LaserEntered(Area2D area)
+	{
+		if(area is TieFighter tieFighter){
+			tieFighter.Explode();
+			QueueFree();
+		}
+	}
 }
