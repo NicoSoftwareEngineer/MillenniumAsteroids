@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://d0wyy7wycqaat"]
+
+[ext_resource type="FontFile" uid="uid://o20x2tptg3gg" path="res://assets/starjedi/Starjedi.ttf" id="1_ouf4f"]
+[ext_resource type="Script" uid="uid://ccvtb4rsjjrqj" path="res://scripts/StartMenu.cs" id="1_thu50"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_thu50"]
+font = ExtResource("1_ouf4f")
+font_size = 80
+
+[node name="StartMenu" type="Control" unique_id=298194969]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_thu50")
+
+[node name="Label" type="Label" parent="." unique_id=2083564110]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.5
+offset_top = -176.0
+offset_right = 233.5
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "$ ASTERoiDS $"
+label_settings = SubResource("LabelSettings_thu50")
+
+[node name="StartGameButton" type="Button" parent="." unique_id=1249757926]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ouf4f")
+theme_override_font_sizes/font_size = 50
+text = "START GAME"
+
+[connection signal="pressed" from="StartGameButton" to="." method="StartGameButtonPressed"]

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cbsmo8u1np54b"]
+
+[ext_resource type="FontFile" uid="uid://o20x2tptg3gg" path="res://assets/starjedi/Starjedi.ttf" id="1_6ebp1"]
+[ext_resource type="Script" uid="uid://b31qlnncub2r" path="res://scripts/GameOverMenu.cs" id="1_cwb3k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cwb3k"]
+font = ExtResource("1_6ebp1")
+font_size = 80
+
+[node name="GameOverMenu" type="Control" unique_id=1214537240]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cwb3k")
+
+[node name="GameOver" type="Label" parent="." unique_id=1053803439]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.5
+offset_top = -179.5
+offset_right = 224.5
+offset_bottom = -66.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game over"
+label_settings = SubResource("LabelSettings_cwb3k")
+
+[node name="TryAgainButton" type="Button" parent="." unique_id=1720906295]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -36.0
+offset_right = 135.5
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_6ebp1")
+theme_override_font_sizes/font_size = 40
+text = " Try Again "
+
+[connection signal="pressed" from="TryAgainButton" to="." method="OnRetryButtonPressed"]

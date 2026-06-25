@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dmeonsx68pg7w"]
+
+[ext_resource type="Texture2D" uid="uid://cm4dnx58xp72l" path="res://assets/milenumFalcon_lives_indicator.png" id="1_fjxat"]
+
+[node name="UILife" type="TextureRect" unique_id=1326420967]
+offset_left = -8.0
+offset_top = -13.0
+offset_right = 42.0
+offset_bottom = 75.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_fjxat")

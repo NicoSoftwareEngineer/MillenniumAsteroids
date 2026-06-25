@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjobw5s8l662r"]
 
 [ext_resource type="Script" uid="uid://dx6do3l7solc5" path="res://scripts/Laser.cs" id="1_a7dhc"]
-[ext_resource type="Texture2D" uid="uid://dqxpw3uubfd2x" path="res://assets/laser_shot.png" id="1_xmihv"]
+[ext_resource type="Texture2D" uid="uid://4n56fwqfwpbk" path="res://assets/lasers.png" id="2_a7dhc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7dhc"]
 size = Vector2(42, 22)
@@ -13,16 +13,16 @@ collision_mask = 2
 script = ExtResource("1_a7dhc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1967801286]
-position = Vector2(24, -2.8619712e-07)
-scale = Vector2(0.04, 0.04)
-texture = ExtResource("1_xmihv")
+position = Vector2(24.936584, 0.11682129)
+scale = Vector2(0.024782326, 0.022186764)
+texture = ExtResource("2_a7dhc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=691673388]
 position = Vector2(21, -1.0000001)
 shape = SubResource("RectangleShape2D_a7dhc")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=347218194]
-position = Vector2(3, -1.0000001)
+position = Vector2(6, -2)
 rect = Rect2(-3.0759583, -8.101471, 30.497746, 18.659859)
 
 [connection signal="area_entered" from="." to="." method="LaserEntered"]
