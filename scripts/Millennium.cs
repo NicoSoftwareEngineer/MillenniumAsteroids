@@ -14,34 +14,35 @@ public partial class Millennium : CharacterBody2D
 
 	[Signal]
 	public delegate void DiedEventHandler();
-	
+
 	[Signal]
 	public delegate void LaserShotEventHandler(Area2D laser);
-	
-	[Export]
-	public int Speed { get; set; } = 1000;
-	
-	[Export]
-	public int Acceleration { get; set; } = 900;
-	
-	[Export] 
-	public float Friction = 10f;
 
 	[Export]
-	public float RotationSpeed { get; set; } = 10f;
-	
-		public override void _Ready()
+	public int Speed { get; set; } = 650;
+
+	[Export]
+	public int Acceleration { get; set; } = 500;
+
+	[Export]
+	public float Friction = 8f;
+
+	[Export]
+	public float RotationSpeed { get; set; } = 4.5f;
+
+	public override void _Ready()
 	{
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		
+
 		_muzzle = GetNode<Node2D>("Muzzle");
 	}
-	
+
 	public override void _Process(double delta)
 	{
-		if(Input.IsActionPressed("shoot"))
+		if (Input.IsActionPressed("shoot"))
 		{
-			if(!_breakShots){
+			if (!_breakShots)
+			{
 				ShootLaser();
 				_breakShots = true;
 			}
@@ -55,7 +56,7 @@ public partial class Millennium : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
-	
+
 		if (Input.IsActionPressed("steer_right"))
 		{
 			Rotation += RotationSpeed * (float)delta;
@@ -65,39 +66,49 @@ public partial class Millennium : CharacterBody2D
 		{
 			Rotation -= RotationSpeed * (float)delta;
 		}
-	
+
 		if (Input.IsActionPressed("thrust"))
 		{
 			_animatedSprite.Play("thrust");
 			Velocity += Transform.X * Acceleration * (float)delta;
-			
+
 			Velocity = Velocity.LimitLength(Speed);
 		}
-		else{
+		else
+		{
 			_animatedSprite.Play("default");
-			
+
 			Velocity = Velocity.MoveToward(Vector2.Zero, Friction);
 		}
 
 		MoveAndSlide();
-		
+
 		ScreenWrap();
 	}
-	
+
 	private void ScreenWrap()
 	{
 		Vector2 screenSize = GetViewportRect().Size;
 		Vector2 pos = GlobalPosition;
 
-		if (pos.X < 0) pos.X = screenSize.X;
-		else if (pos.X > screenSize.X) pos.X = 0;
+		Texture2D currentTexture = _animatedSprite.SpriteFrames.GetFrameTexture(
+			_animatedSprite.Animation,
+			_animatedSprite.Frame
+		);
 
-		if (pos.Y < 0) pos.Y = screenSize.Y;
-		else if (pos.Y > screenSize.Y) pos.Y = 0;
+		Vector2 textureSize = currentTexture.GetSize();
+
+		var textureOffsetFromCenter = (textureSize * _animatedSprite.Scale) / 2;
+
+		if (pos.X + textureOffsetFromCenter.X < 0) pos.X = screenSize.X + textureOffsetFromCenter.X;
+		else if (pos.X - textureOffsetFromCenter.X > screenSize.X) pos.X = 0 - textureOffsetFromCenter.X;
+
+		if (pos.Y + textureOffsetFromCenter.Y < 0) pos.Y = screenSize.Y + textureOffsetFromCenter.Y;
+		else if (pos.Y - textureOffsetFromCenter.Y > screenSize.Y) pos.Y = 0 - textureOffsetFromCenter.Y;
 
 		GlobalPosition = pos;
 	}
-	
+
 	private void ShootLaser()
 	{
 		var l = _laserScene.Instantiate<Area2D>();

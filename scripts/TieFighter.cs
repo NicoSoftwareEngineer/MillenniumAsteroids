@@ -93,17 +93,22 @@ public partial class TieFighter : Area2D
 	{
 		Vector2 screenSize = GetViewportRect().Size;
 
-		if (GlobalPosition.X < 0)
+		var textureSize = _sprite.Texture.GetSize();
+
+		var textureOffsetFromCenter = (textureSize * _sprite.Scale) / 2;
+
+
+		if (GlobalPosition.X + textureOffsetFromCenter.X < 0)
 		{
-			GlobalPosition = GlobalPosition with { X = screenSize.X };
+			GlobalPosition = GlobalPosition with { X = screenSize.X + textureOffsetFromCenter.X };
 		}
-		else if (GlobalPosition.X > screenSize.X)
+		else if (GlobalPosition.X - textureOffsetFromCenter.X > screenSize.X)
 		{
-			GlobalPosition = GlobalPosition with { X = 0f };
+			GlobalPosition = GlobalPosition with { X = 0f - textureOffsetFromCenter.X };
 		}
 
-		if (GlobalPosition.Y < 0) GlobalPosition = GlobalPosition with { Y = screenSize.Y };
-		else if (GlobalPosition.Y > screenSize.Y) GlobalPosition = GlobalPosition with { Y = 0f };
+		if (GlobalPosition.Y + textureOffsetFromCenter.Y < 0) GlobalPosition = GlobalPosition with { Y = screenSize.Y + textureOffsetFromCenter.Y };
+		else if (GlobalPosition.Y - textureOffsetFromCenter.Y > screenSize.Y) GlobalPosition = GlobalPosition with { Y = 0f - textureOffsetFromCenter.Y};
 	}
 
 	public enum Size
