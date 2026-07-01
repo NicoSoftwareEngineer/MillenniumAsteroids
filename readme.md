@@ -6,9 +6,7 @@ A 2D space shooter developed using the Godot Engine and C#. In this game, player
 
 ## Gameplay Showcase
 
-<video src="./docs/assets/showcase.mp4" controls="controls" muted="muted" width="600">
-  Your browser does not support the video tag. <a href="./docs/assets/showcase.mp4">Click here to view the showcase video</a>.
-</video>
+![Gameplay Showcase](./docs/assets/showcase.gif)
 
 ## Documentation
 
